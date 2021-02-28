@@ -29,7 +29,7 @@ namespace LogMon
 
         public void LoadRegistryKeys()
         {
-            RegistryKey regKeys = Registry.LocalMachine.OpenSubKey("Software\\Wow6432Node\\LogMon\\Keywords", false);
+            RegistryKey regKeys = Registry.LocalMachine.OpenSubKey("Software\\Wow6432Node\\STAT\\Keywords", false);
             KeywordListBox.Items.Clear();
 
             foreach (String key in regKeys.GetValueNames())
@@ -266,7 +266,7 @@ namespace LogMon
 
         private void UpdateRegistryKeys()
         {
-            RegistryKey regKeys = Registry.LocalMachine.OpenSubKey("Software\\Wow6432Node\\LogMMon\\Keywords", true);
+            RegistryKey regKeys = Registry.LocalMachine.OpenSubKey("Software\\Wow6432Node\\STAT\\Keywords", true);
             NewKeywordList.Clear();
 
             SetNewKeywordList();

@@ -11,7 +11,7 @@ using System.Windows.Media;
 using System.Data;
 
 
-namespace LogMon
+namespace STAT
 {
     public partial class MainWindow : Fluent.RibbonWindow
     {

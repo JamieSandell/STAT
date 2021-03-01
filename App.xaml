@@ -16,6 +16,7 @@
             <Image x:Key="CyclopsIcon" Source="pack://application:,,,/Resources/cyclops.ico"></Image>
             <Image x:Key="LantekIcon" Source="pack://application:,,,/Resources/lantek.ico"></Image>
             <Image x:Key="Keywords" Source="pack://application:,,,/Resources/keywords.ico"></Image>
+            <Image x:Key="MainIcon" Source="pack://application:,,,/Resources/Icon.ico"></Image>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

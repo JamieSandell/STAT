@@ -10,7 +10,7 @@
                      MinHeight="600" 
                      MinWidth="800"
                      Foreground="White"
-                     TitleForeground="White" Icon="Icon.ico">
+                     TitleForeground="White" Icon="{Binding MainIcon}">
     <Fluent:RibbonWindow.Resources>
         <SolidColorBrush x:Key="Fluent.Ribbon.Brushes.RibbonTabControl.Background">#F1F1F1</SolidColorBrush>
         <SolidColorBrush x:Key="Fluent.Ribbon.Brushes.RibbonTabControl.TabsGrid.Background">#414141</SolidColorBrush>

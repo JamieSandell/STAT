@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace LogMon
+namespace STAT
 {
     public class LogFile
     {

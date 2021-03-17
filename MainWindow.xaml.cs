@@ -180,8 +180,9 @@ namespace STAT
 
         public void GenerateOverView()
         {
-            List<LogFile> items = new List<LogFile>();
-            foreach (string directory in GetBaseDirectories())
+            List<LogFile> items = new List<LogFile>(); // TODO create cached, no need to new every time.
+            List<string> directories = GetBaseDirectories();
+            foreach (string directory in directories)
             {
                 DirectoryInfo dir = new DirectoryInfo(directory);
                 try
@@ -201,8 +202,10 @@ namespace STAT
                     MessageBox.Show((new DirectoryInfo(directory).Name) + " does not contain any log files.");
                 }
             }
-            OverviewListView.ItemsSource = items;
-            OverviewListView.Visibility = Visibility;
+            if (directories.Count > 0)
+            {
+                OverviewListView.ItemsSource = items;                
+            }            
         }
 
         public Boolean QueryPartSearch(string Company)
@@ -311,9 +314,9 @@ namespace STAT
 
         private void OpenFilesButton_Click(object sender, RoutedEventArgs e)
         {
-            OverviewListView.ItemsSource = null;
             OpenFilesButton.IsEnabled = false;
             GenerateOverView();
+            OverviewListView.Visibility = Visibility.Visible;
             OpenFilesButton.IsEnabled = true;
             OverviewTabControl.Visibility = Visibility.Visible;
         }

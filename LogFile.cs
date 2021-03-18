@@ -6,6 +6,8 @@ namespace STAT
     public class LogFile
     {
         public string FolderName { get; set; }
+        
+        public string FolderPath { get; set; }
 
         public string Name { get; set; }
 

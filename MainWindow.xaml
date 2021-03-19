@@ -42,22 +42,6 @@
                                    Padding="0,12,0,0"
                                    Click="OpenFilesButton_Click" LargeIcon="{StaticResource OpenFoldersIcon}"/>
                 </Fluent:RibbonGroupBox>
-                <Fluent:RibbonGroupBox Header="View" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Fluent:Button x:Name="OverviewButton"
-                                   Width="60"
-                                   Padding="0,12,0,0"
-                                   Click="OverviewButton_Click"
-                                   LargeIcon="{StaticResource OverviewIcon}"
-                                   IsEnabled="True"
-                                   ToolTip="Overview: A list of the latest log file in each directory, with a file path, completion date, and result for each backup."/>
-                    <Fluent:Button x:Name="ViewTabbed"
-                                   Width="60"
-                                   Padding="0,12,0,0"
-                                   Click="TabbedButton_Click"
-                                   LargeIcon="{StaticResource TabbedViewicon}" 
-                                   IsEnabled="False"
-                                   ToolTip="Tabbed view: Tab for each backup, with a selectable list to view the content of the log file."/>
-                </Fluent:RibbonGroupBox>
                 <Fluent:RibbonGroupBox Header="Web Part Search" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Fluent:Button x:Name="CyclopsButton"
                                    LargeIcon="{StaticResource CyclopsIcon}"
@@ -81,47 +65,40 @@
             </Fluent:RibbonTabItem>
         </Fluent:Ribbon>
         <Grid Grid.Row="1" Name="HomeGrid" >
-            <TabControl Name="OverviewTabControl" Visibility="Visible">
-                <TabItem Header="Overview">
-                    <ListView HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="OverviewListView" Visibility="Hidden">
-                        <ListView.View>
-                            <GridView AllowsColumnReorder="False" x:Name="GridView1">
-                                <GridViewColumn x:Name="BackupNameCol" Header="Backup Name" Width="Auto">
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock x:Name="BackupNameColTextBox" Text="{Binding FolderName}" Foreground="{Binding TextColor}" ContextMenu="{StaticResource LogFileContextMenu}"/>
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
-                                <GridViewColumn x:Name="FilePathCol" Header="File Path" Width="Auto">
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock x:Name="FilePathColTextBox" Text="{Binding FilePath}" Foreground="{Binding TextColor}" ContextMenu="{StaticResource LogFileContextMenu}"/>
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
-                                <GridViewColumn x:Name="FileDateCol" Header="Date" Width="Auto">
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock x:Name="FileDateColTextBox" Text="{Binding FileDate}" Foreground="{Binding TextColor}" ContextMenu="{StaticResource LogFileContextMenu}"/>
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
-                                <GridViewColumn x:Name="ResultCol" Header="Result" Width="Auto">
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock x:Name="ResultColTextBox" Text="{Binding Result}" Foreground="{Binding TextColor}" ContextMenu="{StaticResource LogFileContextMenu}"/>
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
-                </TabItem>
-            </TabControl>
-            <TabControl Name="SplitTabControl" Visibility="Hidden">
-                <TabItem Header="Split"></TabItem>
-            </TabControl>
+            <ListView HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="OverviewListView" Visibility="Hidden">
+                <ListView.View>
+                    <GridView AllowsColumnReorder="False" x:Name="GridView1">
+                        <GridViewColumn x:Name="BackupNameCol" Header="Backup Name" Width="Auto">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock x:Name="BackupNameColTextBox" Text="{Binding FolderName}" Foreground="{Binding TextColor}" ContextMenu="{StaticResource LogFileContextMenu}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn x:Name="FilePathCol" Header="File Path" Width="Auto">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock x:Name="FilePathColTextBox" Text="{Binding FilePath}" Foreground="{Binding TextColor}" ContextMenu="{StaticResource LogFileContextMenu}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn x:Name="FileDateCol" Header="Date" Width="Auto">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock x:Name="FileDateColTextBox" Text="{Binding FileDate}" Foreground="{Binding TextColor}" ContextMenu="{StaticResource LogFileContextMenu}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn x:Name="ResultCol" Header="Result" Width="Auto">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock x:Name="ResultColTextBox" Text="{Binding Result}" Foreground="{Binding TextColor}" ContextMenu="{StaticResource LogFileContextMenu}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
             <Grid Grid.Row="1" Name="OptionsGrid">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>

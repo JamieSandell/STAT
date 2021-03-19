@@ -16,6 +16,11 @@
         <SolidColorBrush x:Key="Fluent.Ribbon.Brushes.RibbonTabControl.TabsGrid.Background">#414141</SolidColorBrush>
         <SolidColorBrush x:Key="Fluent.Ribbon.Brushes.RibbonTabControl.Content.Background">#F1F1F1</SolidColorBrush>
         <SolidColorBrush x:Key="Fluent.Ribbon.Brushes.RibbonWindow.TitleBackground">#414141</SolidColorBrush>
+
+        <ContextMenu x:Key="LogFileContextMenu">
+            <MenuItem Header="Open File Location" Click="OpenFileLocationContext_Click"/>
+            <MenuItem Header="Open Log File" Click="OpenLogFileContext_Click"/>
+        </ContextMenu>
     </Fluent:RibbonWindow.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -78,34 +83,34 @@
         <Grid Grid.Row="1" Name="HomeGrid" >
             <TabControl Name="OverviewTabControl" Visibility="Visible">
                 <TabItem Header="Overview">
-                    <ListView HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="OverviewListView" Visibility="Hidden">
+                    <ListView HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="OverviewListView" Visibility="Hidden">
                         <ListView.View>
-                            <GridView AllowsColumnReorder="False">
+                            <GridView AllowsColumnReorder="False" x:Name="GridView1">
                                 <GridViewColumn x:Name="BackupNameCol" Header="Backup Name" Width="Auto">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock x:Name="BackupNameColTextBox" Text="{Binding FolderName}" Foreground="{Binding TextColor}" />
+                                            <TextBlock x:Name="BackupNameColTextBox" Text="{Binding FolderName}" Foreground="{Binding TextColor}" ContextMenu="{StaticResource LogFileContextMenu}"/>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
                                 <GridViewColumn x:Name="FilePathCol" Header="File Path" Width="Auto">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock x:Name="FilePathColTextBox" Text="{Binding FilePath}" Foreground="{Binding TextColor}" />
+                                            <TextBlock x:Name="FilePathColTextBox" Text="{Binding FilePath}" Foreground="{Binding TextColor}" ContextMenu="{StaticResource LogFileContextMenu}"/>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
                                 <GridViewColumn x:Name="FileDateCol" Header="Date" Width="Auto">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock x:Name="FileDateColTextBox" Text="{Binding FileDate}" Foreground="{Binding TextColor}" />
+                                            <TextBlock x:Name="FileDateColTextBox" Text="{Binding FileDate}" Foreground="{Binding TextColor}" ContextMenu="{StaticResource LogFileContextMenu}"/>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
                                 <GridViewColumn x:Name="ResultCol" Header="Result" Width="Auto">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock x:Name="ResultColTextBox" Text="{Binding Result}" Foreground="{Binding TextColor}" />
+                                            <TextBlock x:Name="ResultColTextBox" Text="{Binding Result}" Foreground="{Binding TextColor}" ContextMenu="{StaticResource LogFileContextMenu}"/>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>

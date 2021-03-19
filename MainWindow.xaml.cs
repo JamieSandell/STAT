@@ -9,6 +9,7 @@ using WK.Libraries.BetterFolderBrowserNS;
 using Microsoft.Win32;
 using System.Windows.Media;
 using System.Data;
+using System.Diagnostics;
 
 
 namespace STAT
@@ -116,7 +117,7 @@ namespace STAT
 
         #region Processing
         #region Home Tab
-        public List<string> GetBaseDirectories()
+        private List<string> GetBaseDirectories()
         {
             List<string> baseDirectories = new List<String>();
             BetterFolderBrowser baseDirectoryBrowser = new BetterFolderBrowser
@@ -136,7 +137,7 @@ namespace STAT
             return baseDirectories;
         }
 
-        public List<string> GetFileContent(string fileName)
+        private List<string> GetFileContent(string fileName)
         {
             List<string> fileContent = new List<string>();
 
@@ -151,7 +152,7 @@ namespace STAT
             return fileContent;
         }
 
-        public string AnalyzeFileContent(List<string> fileContent)
+        private string AnalyzeFileContent(List<string> fileContent)
         {
             string resultString = "Failure";
             for (int i = 0; i < NewKeywordList.Count; i++)
@@ -178,7 +179,7 @@ namespace STAT
             return fontColor;
         }
 
-        public void GenerateOverView()
+        private void GenerateOverView()
         {
             List<LogFile> items = new List<LogFile>(); // TODO create cached, no need to new every time.
             List<string> directories = GetBaseDirectories();
@@ -191,11 +192,12 @@ namespace STAT
                     items.Add(new LogFile()
                     {
                         FolderName = new DirectoryInfo(directory).Name,
+                        FolderPath = new DirectoryInfo(directory).FullName,
                         FilePath = latestFile.ToString(),
                         FileDate = File.GetCreationTime(latestFile.ToString()),
                         Result = AnalyzeFileContent(GetFileContent(latestFile)),
                         TextColor = SetFontColor(latestFile)
-                    });
+                    }); ;
                 }
                 catch
                 {
@@ -208,7 +210,7 @@ namespace STAT
             }            
         }
 
-        public Boolean QueryPartSearch(string Company)
+        private Boolean QueryPartSearch(string Company)
         {
 
             String url = "";
@@ -348,6 +350,30 @@ namespace STAT
                 MessageBox.Show(ex.Message);
             }
         }
+
+
+        private void OpenFileLocationContext_Click(object sender, RoutedEventArgs e)
+        {
+            LogFile SelectedLogFile = (LogFile)OverviewListView.SelectedItem;
+            Process.Start("explorer.exe", "/select, \"" + SelectedLogFile.FilePath + "\"");
+        }
+
+        private void OpenLogFileContext_Click(object sender, RoutedEventArgs e)
+        {
+            LogViewer logViewer = new LogViewer();
+            LogFile SelectedLogFile = (LogFile)OverviewListView.SelectedItem;
+            foreach (string line in GetFileContent(SelectedLogFile.FilePath))
+            {
+                if(line != "")
+                {
+                    logViewer.LogViewerListBox.Items.Add(line);
+                }
+            }
+
+            logViewer.ShowDialog();
+        }
+
+
         #endregion
 
         #region Options Tab

@@ -297,21 +297,7 @@ namespace STAT
         #region Home Tab
         private void HomeTabItem_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            this.SplitTabControl.Visibility = Visibility.Hidden;
-            this.OverviewTabControl.Visibility = Visibility.Visible;
             this.OptionsGrid.Visibility = Visibility.Hidden;
-        }
-
-        private void OverviewButton_Click(object sender, RoutedEventArgs e)
-        {
-            SplitTabControl.Visibility = Visibility.Hidden;
-            OverviewTabControl.Visibility = Visibility.Visible;
-        }
-
-        private void TabbedButton_Click(object sender, RoutedEventArgs e)
-        {
-            SplitTabControl.Visibility = Visibility.Visible;
-            OverviewTabControl.Visibility = Visibility.Hidden;
         }
 
         private void OpenFilesButton_Click(object sender, RoutedEventArgs e)
@@ -320,7 +306,6 @@ namespace STAT
             GenerateOverView();
             OverviewListView.Visibility = Visibility.Visible;
             OpenFilesButton.IsEnabled = true;
-            OverviewTabControl.Visibility = Visibility.Visible;
         }
 
         private void CyclopsButton_Click(object sender, RoutedEventArgs e)
@@ -351,7 +336,6 @@ namespace STAT
             }
         }
 
-
         private void OpenFileLocationContext_Click(object sender, RoutedEventArgs e)
         {
             LogFile SelectedLogFile = (LogFile)OverviewListView.SelectedItem;
@@ -373,14 +357,11 @@ namespace STAT
             logViewer.ShowDialog();
         }
 
-
         #endregion
 
         #region Options Tab
         private void OptionsTabItem_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            this.SplitTabControl.Visibility = Visibility.Hidden;
-            this.OverviewTabControl.Visibility = Visibility.Hidden;
             this.OptionsGrid.Visibility = Visibility.Visible;
         }
 
